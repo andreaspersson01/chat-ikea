@@ -8,7 +8,7 @@ import { Configuration, OpenAIApi } from "openai";
 import openAiRoutes from "./routes/openai.js";
 import authRoutes from "./routes/auth.js";
 
-const path = require("path");
+const path = require('node:path');
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
