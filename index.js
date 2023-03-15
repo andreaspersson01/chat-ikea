@@ -7,8 +7,8 @@ import morgan from "morgan";
 import { Configuration, OpenAIApi } from "openai";
 import openAiRoutes from "./routes/openai.js";
 import authRoutes from "./routes/auth.js";
+import * as path from 'path';
 
-const path = require('node:path');
 /* CONFIGURATIONS */
 dotenv.config();
 const app = express();
