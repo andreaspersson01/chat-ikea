@@ -29,6 +29,16 @@ export const openai = new OpenAIApi(configuration);
 app.use("/openai", openAiRoutes);
 app.use("/auth", authRoutes);
 
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
+
 /* SERVER SETUP */
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {
