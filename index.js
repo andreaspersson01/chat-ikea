@@ -30,10 +30,13 @@ export const openai = new OpenAIApi(configuration);
 app.use("/openai", openAiRoutes);
 app.use("/auth", authRoutes);
 
-app.use(express.static("./client/build"));
+let relativePath = '/index.js';
+let absolutePath = path.resolve(relativePath);
+console.log(absolutePath);
+app.use(express.static(path.join(absolutePath, "./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(
-    "./client/build/index.html",
+    path.join(absolutePath, "./client/build/index.html"),
     function (err) {
       res.status(500).send(err);
     }
